@@ -1,0 +1,503 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta property="og:title" content="LeetCode Wrapped">
+    <meta property="og:description" content="Get your 2023 LeetCode Stats... LeetCodeWrapped is your go-to platform for a quick and comprehensive overview of your LeetCode journey in 2023. Simply enter your username, and get instant access to all your profile stats presented on a single screen. Our user-friendly interface makes it easy to visualize your performance.
+    What's more, you can download your stats for offline use and share your achievements on social media directly from the platform. Experience the convenience of tracking and showcasing your coding accomplishments with LeetCodeWrapped – simplifying your coding journey in 2023.">
+
+<!-- image generate using canvas and javascript -->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <title>LeetCode Wrapped</title>
+    <link rel="icon" href="image/favicon.png" type="image/x-icon">
+
+
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-JYY0XLMCD1");
+    </script>
+
+    
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap');
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1D1D1D;
+        }
+        
+        img {
+            width: 4%;
+            height: 4%;
+        }
+
+        
+        .container {
+            width: 100%;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: 'Irish Grover', sans-serif;
+        }
+        
+        h1 {
+            font-size: 48px;
+            color: #1776EF;
+            margin-bottom: 10px;
+            font-family: 'Irish Grover', sans-serif;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        
+        
+        .button {
+            font-size: 20px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 25px;
+            background-color: #ffffff;
+            color: #070706;
+            font-family: 'Irish Grover', sans-serif;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            white-space: nowrap;
+        }
+
+        .button:hover {
+            background-color: #FFC01E;
+        }
+
+        .button1 {
+            font-size: 15px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 10px;
+            background-color: beige;
+            color: #FFC01E;
+            font-family: 'Irish Grover', sans-serif;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        
+        .button1:hover {
+            background-color: #5d5d5d;
+        }
+        
+        input[type=text] {
+                width: auto;
+                padding: 10px 20px;
+                margin: 2px 0;
+                border-radius: 10px;
+                text-decoration: none;
+        }
+
+        h6 {
+            font-size: 10px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+
+
+        footer {
+            margin-bottom: 10px;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 16px;
+            display: inline-block;
+        }
+
+        #loading-indicator {
+            display: none;
+            color: #DE6510;
+            margin-top: 10px;
+            /* Add your styles for the loading spinner here */
+        }
+
+        #progress-bar-container {
+            display: none;
+            margin-top: 10px;
+        }
+
+        #progress-bar {
+            width: 0;
+            height: 20px;
+            background-color: #4CAF50;
+        }
+
+        .container_second h1 {
+            font-family: 'Irish Grover', sans-serif;
+            text-align: center;
+            font-size: 40px;
+            color: #1776EF;
+            margin-bottom: 5px;
+            margin-top: -20px;
+        }
+
+        .card {
+            background-color: #212121;
+            box-shadow: 0 4px 8px rgba(68, 67, 67, 0.656);
+            padding: 20px;
+            margin: 20px;
+            margin-top: 60px;
+            border-radius: 10px;
+            max-width: 520px; /* Set maximum width for the card */
+            width: 100%; /* Adjust the width to leave space for both cards */
+            display: inline-block; /* Make the cards appear inline */
+            box-sizing: border-box; /* Include padding and border in the width */
+        }
+
+        ._mainBox{
+            flex: 1;
+        }
+
+
+        .box, .box1, .box2 {
+                margin-bottom: 15px;
+                display: flex;
+        }
+
+        .box{
+            margin-top: 5%;
+            display: flex;
+            justify-content: center;
+            gap: 10%;
+        }
+        .box1{
+            margin-top: 8%;
+            display: flex;
+            justify-content: center;
+            gap: 10%;
+        }
+
+        .container_second h2 {
+         margin: 0;
+        }
+
+        .container_second p {
+         margin-top: 5px;
+         margin-bottom: 0;
+         color: #a19e9e;
+        }
+
+
+        .container_second span{
+            color: yellow;
+            font-weight: bold;
+        }
+
+        .container_second h6 {
+            font-size: 15px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+
+        .container2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .inner-container2 {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        @media screen and (max-width: 768px) {
+            .inner-container2 {
+                flex-direction: column;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+    <img src="image/image 1.png">
+    <a href="https://tejprakash18.github.io/portfolio/index.html" target="_blank" style="margin-right: 5%; text-decoration: none; color: #B1BAB8;">Tej Upadhyay</a>
+
+    </div>
+
+    <div id="first_container" class="container">
+        <h1><span style="color: #B3B1B0;">LeetCode</span> <span style="color: #E7A41F;">Wrapped</span></h1>
+        <p style="font-size: 24px; color: #1776EF; margin-bottom: 20px;">Get your 2023 LeetCode Status</p>
+        <button id="wrapButton" class="button" onclick="showInput()"><b>Let's wrap 2023</b></button>
+        <div id="inputSection" style="display: none;">
+            <input type="text" id="username" placeholder="Enter your username">
+            <button class="button1" id="wrap_up_button"><b>Wrapped</b></button>
+        </div>
+
+        <div id="loading-indicator">Loading...</div>
+        <div id="progress-bar-container">
+            <div id="progress-bar"></div>
+        </div>
+
+    </div>
+
+
+    <div class="container2 container_second contain_two_box" id="second_container" style="display: none;">
+        <div class="inner-container2">
+            
+            <div id="download_content_01" class="card _mainBox">
+
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <p id="userNameset01" style="margin-top: 20px; margin-left: 15px;">Hello Tej Upadhyay </p>
+                    <img  id="download_button_01" style="margin-right: 5%; width: 25px;" src="image/download icon.png"/>
+                </div>
+            
+                <p style="margin-left: 15px;">It's wrapped time for questions.....</p>
+                <br>
+                <div class="box">
+                    <div>
+                    <h2 id="q1total_solved" style="color: #2BB15B;">0</h2>
+                    <p>Total Submissions</p>
+                </div>
+                <div>
+                    <h2 id="q1active_days" style="color: #FFC01E;">0</h2>
+                    <p>Active Days</p>
+                </div>
+                <div>
+                    <h2 id="q1max_streak" style="color: #1776EF;">00</h2>
+                    <p>Maximum Streak</p>
+                </div>
+                </div>
+                <div class="box1">
+                    <div>
+                    <h2 id="q1active_month" style="color: white;">0</h2>
+                    <p>Most Active Month</p>
+                    </div>
+                    <div>
+                        <h2 id="q1active_day" style="color: #DE6510;">0</h2>
+                        <p>Most Active Day</p>
+                        </div>
+                    
+                </div>
+        
+                <!-- <p style="text-align: right; margin-top: 30px; margin-bottom: 20px; margin-right: 10px;"><u>https://tejprakash18.github.io/portfolio/index.html</u></p> -->
+               
+        
+        
+             </div>
+        
+            <div id="download_content_02" class="card _mainBox">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <p id="userNameset02" style="margin-top: 20px; margin-left: 15px;">Hello Tej Upadhyay </p>
+                    <img id="download_button_02" style="margin-right: 5%; width: 25px;" src="image/download icon.png"/>
+                </div>
+                <p style="margin-left: 15px;">It's wrapped time for contests.....</p>
+                <br>
+                <div class="box">
+                    <div>
+                    <h2 id="q2live_contest" style="color: #2BB15B;">0</h2>
+                    <p>Live Contest</p>
+                </div>
+                <div>
+                    <h2 id="q2average_solved" style="color: #FFC01E;">0</h2>
+                    <p>Average Solved</p>
+                    </div>
+                <div>
+                    <h2 id="q2maximum_rating" style="color: #1776EF;">0</h2>
+                    <p>Maximum Rating</p>
+                </div>
+                </div>
+                <div class="box1">
+                    <div>
+                        <h2 id="q2highest_rank" style="color: #6A7BE8;">0</h2>
+                        <p>Highest Rank</p>
+                    </div>
+                    <div>
+                    <h2 id="q2lowest_rank" style="color: #DE6510;">0</h2>
+                    <p>Lowest Rank</p>
+                    </div>
+                    <div>
+                        <h2 id="q2active_month" style="color: #ffffff;">Mar</h2>
+                        <p>Most Active Month</p>
+                        </div>
+                    
+                </div>
+        
+                <!-- <p style="text-align: right; margin-top: 30px; margin-bottom: 20px; margin-right: 10px;"><u>https://tejprakash18.github.io/portfolio/index.html</u></p> -->
+               
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+
+        const wrap_up_button = document.getElementById("wrap_up_button")
+        const userName = document.getElementById('username')
+        const loadingIndicator = document.getElementById('loading-indicator');
+        const progressBarContainer = document.getElementById('progress-bar-container');
+        const progressBar = document.getElementById('progress-bar');
+        var visibleDiv = document.getElementById('first_container');
+        var invisibleDiv = document.getElementById('second_container');
+
+
+        function downloadDivAsImage(divId) {
+            const divToDownload = document.getElementById(divId);
+
+            html2canvas(divToDownload).then(function (canvas) {
+                // Create an "a" element to trigger the download
+                const downloadLink = document.createElement('a');
+                // Convert canvas to image data URL
+                const imageDataUrl = canvas.toDataURL('image/png');
+                // Set the href attribute of the "a" element to the image data URL
+                downloadLink.href = imageDataUrl;
+                // Set the download attribute with the desired file name
+                downloadLink.download = 'downloaded_image.png';
+                // Append the "a" element to the document
+                document.body.appendChild(downloadLink);
+                // Trigger a click on the "a" element to start the download
+                downloadLink.click();
+                // Remove the "a" element from the document
+                document.body.removeChild(downloadLink);
+            });
+        }
+
+        document.getElementById('download_button_01').addEventListener('click', function () {
+            downloadDivAsImage('download_content_01');
+        });
+        document.getElementById('download_button_02').addEventListener('click', function () {
+            downloadDivAsImage('download_content_02');
+        });
+
+
+function updateProgressBar(loaded, total) {
+    const percent = (loaded / total) * 100;
+    progressBar.style.width = percent + '%';
+}
+
+async function getData(userName) {
+    const xhr = new XMLHttpRequest();
+    const apiUrl = `https://vivacious-tweed-jacket-slug.cyclic.app/app?userName=${userName}`;
+
+    xhr.open('GET', apiUrl);
+
+    xhr.onprogress = (event) => {
+        if (event.lengthComputable) {
+            updateProgressBar(event.loaded, event.total);
+        }
+    };
+
+    xhr.onloadstart = () => {
+        loadingIndicator.style.display = 'block';
+        progressBarContainer.style.display = 'block';
+    };
+
+    xhr.onloadend = () => {
+        loadingIndicator.style.display = 'none';
+        progressBarContainer.style.display = 'none';
+        progressBar.style.width = '0%';
+    };
+
+    xhr.send();
+
+    return new Promise((resolve, reject) => {
+        xhr.onload = () => {
+            if (xhr.status === 200) {
+                resolve(JSON.parse(xhr.responseText));
+            } else {
+                reject(new Error(`Error: ${xhr.status} - ${xhr.statusText}`));
+            }
+        };
+        xhr.onerror = () => {
+            reject(new Error('Network error'));
+        };
+    });
+}
+
+
+        function showInput() {
+            var wrapButton = document.getElementById('wrapButton');
+            if (wrapButton) {
+                wrapButton.style.display = 'none';
+            }
+
+            var inputSection = document.getElementById('inputSection');
+            if (inputSection) {
+                inputSection.style.display = 'block';
+            }
+        }
+
+        wrap_up_button.addEventListener('click', async () => {
+          const value = userName.value;
+            try {
+              const data = await getData(value);
+              visibleDiv.style.display = 'none';
+              invisibleDiv.style.display = 'block';
+              console.log(data);
+
+const averageProblemsSolvedContest = data.average_problems_solved_contest;
+const contestAttended = data.contest_attended;
+const highestRank = data.highest_rank;
+const lowestRank = data.lowest_rank;
+const maxRating = data.max_rating;
+const maxStreak = data.max_streak;
+const mostActiveDay = data.most_active_day;
+const mostActiveMonth = data.most_active_month;
+const mostActiveMonthContest = data.most_active_month_contest;
+const totalActiveDays = data.total_active_days;
+const totalQuestionsSolved = data.total_questions_solved;
+// Now, you can use these variables as needed
+console.log(averageProblemsSolvedContest, contestAttended, highestRank, lowestRank, maxRating, maxStreak, mostActiveDay, mostActiveMonth, mostActiveMonthContest, totalActiveDays, totalQuestionsSolved);
+       
+document.getElementById('q2live_contest').textContent = contestAttended;
+document.getElementById('q2average_solved').textContent = averageProblemsSolvedContest;
+document.getElementById('q2maximum_rating').textContent = maxRating;
+document.getElementById('q2highest_rank').textContent = highestRank;
+document.getElementById('q2lowest_rank').textContent = lowestRank;
+document.getElementById('q2active_month').textContent = mostActiveMonthContest
+document.getElementById('userNameset01').textContent = "Hello "+value
+document.getElementById('userNameset02').textContent = "Hello "+value
+
+
+document.getElementById('q1total_solved').textContent = totalQuestionsSolved
+document.getElementById('q1active_days').textContent = totalActiveDays
+document.getElementById('q1max_streak').textContent = maxStreak
+document.getElementById('q1active_month').textContent = mostActiveMonth
+document.getElementById('q1active_day').textContent = mostActiveDay 
+
+
+
+
+
+            } catch (error) {
+               alert("UserName Doesn't exist!")
+               console.error("Error:", error.message);
+             }
+        });
+
+
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+       
+    </script>
+
+</body>
+</html>
